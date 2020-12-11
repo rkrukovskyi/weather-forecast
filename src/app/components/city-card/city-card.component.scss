@@ -1,0 +1,12 @@
+.card-wrapper {
+  display: flex;
+  justify-content: space-around;
+  .card-info {
+    font-size: larger;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .delete-button {
+    margin-bottom: 20px;
+  }
+}

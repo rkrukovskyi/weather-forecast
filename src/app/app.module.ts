@@ -9,19 +9,23 @@ import { WeatherWidgetService } from './components/weather-widget/weather-widget
 import { LocationFormComponent } from './components/location-form/location-form.component';
 import { CityCardComponent } from './components/city-card/city-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from "carbon-components-angular/button";
+import { InputModule } from "carbon-components-angular/input";
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherWidgetComponent,
     LocationFormComponent,
-    CityCardComponent
+    CityCardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ButtonModule,
+    InputModule,
   ],
   providers: [WeatherWidgetService],
   bootstrap: [AppComponent]

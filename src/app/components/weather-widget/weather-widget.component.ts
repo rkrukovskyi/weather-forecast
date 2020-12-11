@@ -22,10 +22,15 @@ export class WeatherWidgetComponent implements OnInit, OnDestroy {
         this.cityCards$.next([{
           id: 1,
           name: 'London',
-          temperature: i.main.temp,
+          temperature: this.convertTemp(i.main.temp),
         }])
       }
     )
+  }
+
+  convertTemp(k: number): number{
+    const temp = Number((k - 273.15).toFixed(2));
+    return temp
   }
 
   getWeather(location: string) {
@@ -34,7 +39,7 @@ export class WeatherWidgetComponent implements OnInit, OnDestroy {
         this.addData({
             id: this.cityCards$.value.length + 1,
             name: i.name,
-            temperature: i.main.temp
+            temperature: this.convertTemp(i.main.temp),
           }
         )
       }

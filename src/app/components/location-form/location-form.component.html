@@ -1,4 +1,6 @@
-<div [formGroup]="formGroup">
-  <input type="text" formControlName="name">
-  <button (click)="onGetCityWeather()">Check Weather in City</button>
+<h4>Please Enter The Location Where You Want To Check The Weather</h4>
+
+<div class="form-wrapper" [formGroup]="formGroup">
+  <input class="location-input" ibmText type="text" formControlName="name">
+  <button ibmButton (click)="onGetCityWeather()">Check Weather in City</button>
 </div>

@@ -3,7 +3,7 @@
   (submit)="getWeather($event)"
 ></app-location-form>
 <br>
-<ul *ngFor="let card of cityCards$ | async">
+<ul ibmList *ngFor="let card of cityCards$ | async">
   <li>
     <app-city-card [card]="card" (delete)="deleteCityCard($event)"></app-city-card>
   </li>
