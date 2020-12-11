@@ -12,13 +12,15 @@ import { takeUntil } from 'rxjs/operators';
 export class WeatherWidgetComponent implements OnInit, OnDestroy {
   cityCards$ =  new BehaviorSubject<CityCard[]>(null);
   private destroy$ = new Subject();
+  defaultCity = 'London';
 
   constructor(private weatherWidgetService: WeatherWidgetService) { }
 
   ngOnInit(): void {
-    this.weatherWidgetService.getCityTemperature('London').pipe(takeUntil(this.destroy$)).subscribe(
+    this.weatherWidgetService.getCityTemperature(this.defaultCity).pipe(takeUntil(this.destroy$)).subscribe(
       (i) => {
         this.cityCards$.next([{
+          id: 1,
           name: 'London',
           temperature: i.main.temp,
         }])
@@ -30,15 +32,26 @@ export class WeatherWidgetComponent implements OnInit, OnDestroy {
     this.weatherWidgetService.getCityTemperature(location).pipe(takeUntil(this.destroy$)).subscribe(
       (i) => {
         this.addData({
+            id: this.cityCards$.value.length + 1,
             name: i.name,
-            temperature: i.main.temp}
-        )}
-    );
+            temperature: i.main.temp
+          }
+        )
+      }
+    )
   }
 
   addData(dataObj: CityCard) {
     const currentValue = this.cityCards$.value;
     const updatedValue = [...currentValue, dataObj];
+    this.cityCards$.next(updatedValue);
+  }
+
+  deleteCityCard(id: number) {
+    const currentValue = this.cityCards$.value.filter(
+      i => !(i.id === id)
+    );
+    const updatedValue = [...currentValue];
     this.cityCards$.next(updatedValue);
   }
 

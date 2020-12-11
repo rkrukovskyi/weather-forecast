@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CityCard } from 'src/app/models/weather-models';
 
 @Component({
@@ -8,9 +8,14 @@ import { CityCard } from 'src/app/models/weather-models';
 })
 export class CityCardComponent implements OnInit {
   @Input() card: CityCard;
+  @Output() delete =  new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void { }
+
+  onCardDelete(id: number) {
+    this.delete.emit(id);
+  }
 
 }
