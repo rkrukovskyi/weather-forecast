@@ -17,5 +17,4 @@ export class CityCardComponent implements OnInit {
   onCardDelete(id: number) {
     this.delete.emit(id);
   }
-
 }

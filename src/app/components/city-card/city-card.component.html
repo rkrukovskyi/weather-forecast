@@ -1,5 +1,4 @@
-<div>
-  {{card.name}} - {{card.temperature}}
-  <button (click)="onCardDelete(card.id)">Delete Card</button>
+<div class="card-wrapper">
+  <span class="card-info">{{card.name}}: {{card.temperature}} C</span>
+  <button class="delete-button" [ibmButton] (click)="onCardDelete(card.id)">Delete Card</button>
 </div>
-
