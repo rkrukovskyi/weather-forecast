@@ -1,0 +1,13 @@
+
+<app-location-form
+  (submit)="getWeather($event)"
+></app-location-form>
+<br>
+<ul *ngFor="let card of cityCards$ | async">
+  <li>
+    <app-city-card [card]="card"></app-city-card>
+  </li>
+</ul>
+
+
+
